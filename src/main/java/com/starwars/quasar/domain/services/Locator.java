@@ -1,4 +1,4 @@
-package com.starwars.quasar.services;
+package com.starwars.quasar.domain.services;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
-import com.starwars.quasar.exceptions.LocationException;
-import com.starwars.quasar.model.Position;
+import com.starwars.quasar.domain.exceptions.LocationException;
+import com.starwars.quasar.domain.model.Position;
 
 @Service
 public class Locator {

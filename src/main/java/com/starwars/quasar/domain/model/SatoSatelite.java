@@ -1,4 +1,4 @@
-package com.starwars.quasar.model;
+package com.starwars.quasar.domain.model;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,6 +1,6 @@
-package com.starwars.quasar.services;
+package com.starwars.quasar.domain.services;
 
-import com.starwars.quasar.model.Position;
+import com.starwars.quasar.domain.model.Position;
 
 public interface InteligenceService {
 	

@@ -1,4 +1,4 @@
-package com.starwars.quasar.exceptions;
+package com.starwars.quasar.domain.exceptions;
 
 public class MessageException extends RuntimeException {
 

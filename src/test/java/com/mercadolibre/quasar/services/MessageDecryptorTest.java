@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.starwars.quasar.exceptions.MessageException;
-import com.starwars.quasar.services.MessageDecryptor;
+import com.starwars.quasar.domain.exceptions.MessageException;
+import com.starwars.quasar.domain.services.MessageDecryptor;
 
 public class MessageDecryptorTest {
 	

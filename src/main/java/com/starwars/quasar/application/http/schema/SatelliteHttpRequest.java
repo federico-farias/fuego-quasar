@@ -1,4 +1,4 @@
-package com.starwars.quasar.http.schema;
+package com.starwars.quasar.application.http.schema;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

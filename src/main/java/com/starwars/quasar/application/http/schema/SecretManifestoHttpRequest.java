@@ -1,4 +1,4 @@
-package com.starwars.quasar.http.schema;
+package com.starwars.quasar.application.http.schema;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TopSecretHttpRequest {
+public class SecretManifestoHttpRequest {
 	
 	private List<SatelliteHttpRequest> satellites;
 

@@ -1,4 +1,4 @@
-package com.starwars.quasar.model;
+package com.starwars.quasar.application.http.schema;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,17 +9,10 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class Position {
+public class PositionHttpResponse {
 
 	private double x;
 
 	private double y;
-	
-	public double[] toArray() {
-		return new double[] {
-				this.x,
-				this.y
-		};
-	}
 
 }

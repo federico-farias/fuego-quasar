@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.starwars.quasar.exceptions.LocationException;
-import com.starwars.quasar.model.Position;
-import com.starwars.quasar.services.Locator;
+import com.starwars.quasar.domain.exceptions.LocationException;
+import com.starwars.quasar.domain.model.Position;
+import com.starwars.quasar.domain.services.Locator;
 
 public class LocatorTest {
 

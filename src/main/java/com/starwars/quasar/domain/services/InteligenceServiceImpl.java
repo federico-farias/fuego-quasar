@@ -1,4 +1,4 @@
-package com.starwars.quasar.services;
+package com.starwars.quasar.domain.services;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.starwars.quasar.http.schema.PositionHttpResponse;
-import com.starwars.quasar.http.schema.SatelliteHttpRequest;
-import com.starwars.quasar.http.schema.TopSecretHttpRequest;
-import com.starwars.quasar.http.schema.TopSecretHttpResponse;
-import com.starwars.quasar.model.KenobiSatelite;
-import com.starwars.quasar.model.Position;
-import com.starwars.quasar.model.Satelite;
-import com.starwars.quasar.model.SatoSatelite;
-import com.starwars.quasar.model.SkywalkerSatelite;
+import com.starwars.quasar.application.http.schema.PositionHttpResponse;
+import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.domain.model.KenobiSatelite;
+import com.starwars.quasar.domain.model.Position;
+import com.starwars.quasar.domain.model.Satelite;
+import com.starwars.quasar.domain.model.SatoSatelite;
+import com.starwars.quasar.domain.model.SkywalkerSatelite;
+import com.starwars.quasar.domain.request.SatelliteRequest;
+import com.starwars.quasar.domain.request.SecretManifestoRequest;
 
 @Service
 public class InteligenceServiceImpl implements InteligenceService {
@@ -39,8 +39,8 @@ public class InteligenceServiceImpl implements InteligenceService {
 		this.satellites.put(sato.getName().toLowerCase(), sato);
 	}
 
-	public TopSecretHttpResponse topSecreet(TopSecretHttpRequest request) {
-		List<SatelliteHttpRequest> satellites = request.getSatellites();
+	public TopSecretHttpResponse detect(SecretManifestoRequest request) {
+		List<SatelliteRequest> satellites = request.getSatellites();
 		String[][] messages = new String[satellites.size()][];
 		double[] distances = new double[satellites.size()];
 		
@@ -51,7 +51,7 @@ public class InteligenceServiceImpl implements InteligenceService {
 				.collect(Collectors.toList());
 		
 		for (int i = 0; i < satellites.size(); i++) {
-			SatelliteHttpRequest satelite = satellites.get(i);
+			SatelliteRequest satelite = satellites.get(i);
 			distances[i] = satelite.getDistance().doubleValue();
 			messages[i] = satelite.getMessage();
 		}

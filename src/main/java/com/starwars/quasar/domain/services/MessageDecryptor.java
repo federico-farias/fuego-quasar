@@ -1,11 +1,11 @@
-package com.starwars.quasar.services;
+package com.starwars.quasar.domain.services;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
-import com.starwars.quasar.exceptions.MessageException;
+import com.starwars.quasar.domain.exceptions.MessageException;
 
 @Service
 public class MessageDecryptor {

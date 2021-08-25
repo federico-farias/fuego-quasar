@@ -1,4 +1,4 @@
-package com.starwars.quasar.model;
+package com.starwars.quasar.domain.model;
 
 public interface Satelite {
 
