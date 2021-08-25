@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.starwars.quasar.application.http.schema.PositionHttpResponse;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.domain.exceptions.BusinessException;
 import com.starwars.quasar.domain.model.KenobiSatelite;
 import com.starwars.quasar.domain.model.Position;
 import com.starwars.quasar.domain.model.Satelite;
@@ -44,6 +45,8 @@ public class InteligenceServiceImpl implements InteligenceService {
 		String[][] messages = new String[satellites.size()][];
 		double[] distances = new double[satellites.size()];
 		
+		ensurer(request.getSatellites());
+		
 		List<Position> satellitesPositions = this.satellites
 				.values()
 				.stream()
@@ -64,6 +67,14 @@ public class InteligenceServiceImpl implements InteligenceService {
 						position.getX(), 
 						position.getY()), 
 				message);
+	}
+
+	private void ensurer(List<SatelliteRequest> satellites) {
+		for (SatelliteRequest satelite : satellites) {
+			if (!this.satellites.containsKey(satelite.getName().toLowerCase())) {
+				throw new BusinessException(String.format("No se encontró el satelite [%s]", satelite.getName()));
+			}
+		}
 	}
 
 	@Override
