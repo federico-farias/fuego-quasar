@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import com.starwars.quasar.domain.exceptions.LocationException;
 import com.starwars.quasar.domain.model.Position;
-import com.starwars.quasar.domain.services.LocatorImpl;
+import com.starwars.quasar.domain.services.impl.LocatorImpl;
 
 public class LocatorTest {
 

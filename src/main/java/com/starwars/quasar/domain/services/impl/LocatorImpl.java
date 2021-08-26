@@ -1,4 +1,4 @@
-package com.starwars.quasar.domain.services;
+package com.starwars.quasar.domain.services.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
 import com.starwars.quasar.domain.exceptions.LocationException;
 import com.starwars.quasar.domain.model.Position;
+import com.starwars.quasar.domain.services.Locator;
 
 public class LocatorImpl implements Locator {
 

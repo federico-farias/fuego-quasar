@@ -12,16 +12,16 @@ import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.repository.SatelliteRepositoryImpl;
 import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.request.SecretManifestoRequest;
-import com.starwars.quasar.domain.services.InteligenceService;
-import com.starwars.quasar.domain.services.MessageDecryptorImpl;
+import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
+import com.starwars.quasar.domain.services.impl.MessageDecryptorImpl;
 
 public class InteligenceServiceTest {
 
-	private InteligenceService service;
+	private InteligenceServiceImpl service;
 	
 	@BeforeEach
 	public void setUp() {
-		this.service = new InteligenceService(
+		this.service = new InteligenceServiceImpl(
 				new SatelliteRepositoryImpl(), 
 				new MessageDecryptorImpl());
 	}

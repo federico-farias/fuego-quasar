@@ -14,7 +14,7 @@ import com.starwars.quasar.application.http.schema.SatelliteHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.request.SecretManifestoRequest;
-import com.starwars.quasar.domain.services.InteligenceService;
+import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,9 +26,9 @@ public class RebelIntelligenceSplitServiceController {
 	
 	List<SatelliteRequest> satellites;
 
-	private final InteligenceService service;
+	private final InteligenceServiceImpl service;
 
-	public RebelIntelligenceSplitServiceController(InteligenceService service) {
+	public RebelIntelligenceSplitServiceController(InteligenceServiceImpl service) {
 		this.service = service;
 		this.satellites = new LinkedList<>();
 	}
