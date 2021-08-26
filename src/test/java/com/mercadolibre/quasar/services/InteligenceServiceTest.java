@@ -9,21 +9,21 @@ import org.junit.jupiter.api.Test;
 
 import com.starwars.quasar.application.http.schema.PositionHttpResponse;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.domain.repository.SatelliteRepositoryImpl;
 import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.request.SecretManifestoRequest;
-import com.starwars.quasar.domain.services.InteligenceServiceImpl;
-import com.starwars.quasar.domain.services.Locator;
-import com.starwars.quasar.domain.services.MessageDecryptor;
+import com.starwars.quasar.domain.services.InteligenceService;
+import com.starwars.quasar.domain.services.MessageDecryptorImpl;
 
 public class InteligenceServiceTest {
 
-	private InteligenceServiceImpl service;
+	private InteligenceService service;
 	
 	@BeforeEach
 	public void setUp() {
-		this.service = new InteligenceServiceImpl(
-				new Locator(), 
-				new MessageDecryptor());
+		this.service = new InteligenceService(
+				new SatelliteRepositoryImpl(), 
+				new MessageDecryptorImpl());
 	}
 
 	@Test

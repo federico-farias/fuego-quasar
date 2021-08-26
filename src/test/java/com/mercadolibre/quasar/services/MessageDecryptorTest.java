@@ -7,21 +7,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.starwars.quasar.domain.exceptions.MessageException;
-import com.starwars.quasar.domain.services.MessageDecryptor;
+import com.starwars.quasar.domain.services.MessageDecryptorImpl;
 
 public class MessageDecryptorTest {
 	
-	private MessageDecryptor decryptor;
+	private MessageDecryptorImpl decryptor;
 	
 	@BeforeEach
 	public void setUp() {
-		this.decryptor = new MessageDecryptor();
+		this.decryptor = new MessageDecryptorImpl();
 	}
 	
 	@Test
 	public void itShouldDecipherWhenWordsAreConsistent() {
 		String expect = "este es un mensaje secreto";
-		String message = this.decryptor.decipher(
+		String message = this.decryptor.getMessage(
 				new String[] { "este", "", "", "mensaje", "" },
 				new String[] { "", "es", "", "", "secreto" }, 
 				new String[] { "este", "", "un", "", "" });
@@ -31,7 +31,7 @@ public class MessageDecryptorTest {
 	@Test
 	public void itShouldFailDecipherWhenWordsAreNotConsistent() {
 		assertThrows(MessageException.class, () -> {
-			this.decryptor.decipher(
+			this.decryptor.getMessage(
 					new String[] { "OK", "", "", "mensaje", "" },
 					new String[] { "", "es", "", "", "secreto" }, 
 					new String[] { "este", "", "un", "", "" });

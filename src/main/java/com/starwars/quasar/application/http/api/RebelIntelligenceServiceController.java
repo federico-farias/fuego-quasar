@@ -12,19 +12,19 @@ import com.starwars.quasar.application.http.schema.SecretManifestoHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.request.SecretManifestoRequest;
-import com.starwars.quasar.domain.services.InteligenceServiceImpl;
+import com.starwars.quasar.domain.services.InteligenceService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Productos")
+@Tag(name = "Fuego de Quasar")
 @RestController
 @RequestMapping("/topsecret")
 public class RebelIntelligenceServiceController {
 
-	private final InteligenceServiceImpl service;
+	private final InteligenceService service;
 
-	public RebelIntelligenceServiceController(InteligenceServiceImpl service) {
+	public RebelIntelligenceServiceController(InteligenceService service) {
 		this.service = service;
 	}
 

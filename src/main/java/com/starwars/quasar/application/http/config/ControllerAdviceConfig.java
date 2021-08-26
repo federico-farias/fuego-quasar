@@ -18,7 +18,7 @@ public class ControllerAdviceConfig {
 	}
 
 	@ExceptionHandler(value = { MessageException.class })
-	public ResponseEntity<?> handleMessageException(LocationException ex) {
+	public ResponseEntity<?> handleMessageException(MessageException ex) {
 		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	
