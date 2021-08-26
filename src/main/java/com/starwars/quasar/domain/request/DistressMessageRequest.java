@@ -7,11 +7,11 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class SecretManifestoRequest {
+public class DistressMessageRequest {
 
 	private List<SatelliteRequest> satellites;
 
-	public SecretManifestoRequest(List<SatelliteRequest> satellites) {
+	public DistressMessageRequest(List<SatelliteRequest> satellites) {
 		this.satellites = satellites;
 	}
 

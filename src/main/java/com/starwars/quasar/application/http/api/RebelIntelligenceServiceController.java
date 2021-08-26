@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.starwars.quasar.application.http.schema.SecretManifestoHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.request.SecretManifestoRequest;
+import com.starwars.quasar.domain.request.DistressMessageRequest;
 import com.starwars.quasar.domain.services.InteligenceService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +34,7 @@ public class RebelIntelligenceServiceController {
 		List<SatelliteRequest> satellites = request.getSatellites().stream().map(satelite -> {
 			return new SatelliteRequest(satelite.getName(), satelite.getDistance(), satelite.getMessage());
 		}).collect(Collectors.toList());
-		return this.service.detect(new SecretManifestoRequest(satellites));
+		return this.service.decipher(new DistressMessageRequest(satellites));
 	}
 
 }

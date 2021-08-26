@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.starwars.quasar.application.http.schema.SatelliteHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.request.SecretManifestoRequest;
+import com.starwars.quasar.domain.request.DistressMessageRequest;
 import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,7 +45,7 @@ public class RebelIntelligenceSplitServiceController {
 	@Operation(summary = "Retorna la fuente y el mensaje auxilio descifrado de la nave.")
 	@GetMapping
 	public TopSecretHttpResponse detect() {
-		TopSecretHttpResponse response = this.service.detect(new SecretManifestoRequest(satellites));
+		TopSecretHttpResponse response = this.service.decipher(new DistressMessageRequest(satellites));
 		this.satellites = new LinkedList<>();
 		return response;
 	}

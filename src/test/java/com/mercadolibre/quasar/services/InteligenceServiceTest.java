@@ -11,7 +11,7 @@ import com.starwars.quasar.application.http.schema.PositionHttpResponse;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
 import com.starwars.quasar.domain.repository.SatelliteRepositoryImpl;
 import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.request.SecretManifestoRequest;
+import com.starwars.quasar.domain.request.DistressMessageRequest;
 import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 import com.starwars.quasar.domain.services.impl.MessageDecryptorImpl;
 
@@ -27,19 +27,19 @@ public class InteligenceServiceTest {
 	}
 
 	@Test
-	public void topSecreetTest() {
+	public void itShouldGetTheLocationAndDecipherTheShipsDistressMessage() {
 		TopSecretHttpResponse expectedResponse = new TopSecretHttpResponse(
 				new PositionHttpResponse(-100.04391951008549, 75.45636245570131), 
 				"este es un mensaje secreto");
 		
-		SecretManifestoRequest request = new SecretManifestoRequest(
+		DistressMessageRequest request = new DistressMessageRequest(
 				Arrays.asList(
 						new SatelliteRequest("kenobi", 505.0, new String[] { "este", "", "", "mensaje", "" }),
 						new SatelliteRequest("skywalker", 253.0, new String[] { "", "es", "", "", "secreto" }),
 						new SatelliteRequest("sato", 628.0, new String[] { "este", "", "un", "", "" })
 				));
 
-		TopSecretHttpResponse responseResult = this.service.detect(request);
+		TopSecretHttpResponse responseResult = this.service.decipher(request);
 		assertEquals(responseResult, expectedResponse);
 	}
 

@@ -11,7 +11,7 @@ import com.starwars.quasar.domain.model.Position;
 import com.starwars.quasar.domain.model.Satelite;
 import com.starwars.quasar.domain.repository.SatelliteRepository;
 import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.request.SecretManifestoRequest;
+import com.starwars.quasar.domain.request.DistressMessageRequest;
 import com.starwars.quasar.domain.services.InteligenceService;
 import com.starwars.quasar.domain.services.Locator;
 import com.starwars.quasar.domain.services.MessageDecryptor;
@@ -29,7 +29,8 @@ public class InteligenceServiceImpl implements InteligenceService {
 		this.decryptor = decryptor;
 	}
 
-	public TopSecretHttpResponse detect(SecretManifestoRequest request) {
+	@Override
+	public TopSecretHttpResponse decipher(DistressMessageRequest request) {
 		List<SatelliteRequest> satellitesRequest = request.getSatellites();
 		
 		List<Satelite> satellites = this.satellitesFinder.findByName(satellitesRequest);
