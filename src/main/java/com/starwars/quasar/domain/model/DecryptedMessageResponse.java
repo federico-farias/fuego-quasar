@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class Satelite {
+public class DecryptedMessageResponse {
+	
+	private PositionResponse position;
 
-	private final String name;
-
-	private final Position position;
+	private String message;
 
 }

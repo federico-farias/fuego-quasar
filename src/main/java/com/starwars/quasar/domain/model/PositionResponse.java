@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class Satelite {
+public class PositionResponse {
+	
+	private double x;
 
-	private final String name;
-
-	private final Position position;
+	private double y;
 
 }

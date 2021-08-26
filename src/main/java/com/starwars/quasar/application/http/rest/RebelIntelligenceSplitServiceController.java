@@ -1,4 +1,4 @@
-package com.starwars.quasar.application.http.api;
+package com.starwars.quasar.application.http.rest;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,44 +10,54 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.starwars.quasar.application.http.mapping.DistressMessageDataMapper;
+import com.starwars.quasar.application.http.mapping.TopSecretDataMapper;
 import com.starwars.quasar.application.http.schema.SatelliteHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
-import com.starwars.quasar.domain.request.SatelliteRequest;
+import com.starwars.quasar.domain.model.DecryptedMessageResponse;
 import com.starwars.quasar.domain.request.DistressMessageRequest;
+import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Fuego de Quasar")
+@Tag(name = "Fuego de Quasar - Top Secret Split")
 @RestController
 @RequestMapping("/topsecret_split")
 public class RebelIntelligenceSplitServiceController {
 	
-	List<SatelliteRequest> satellites;
+	private final List<SatelliteRequest> satellites;
 
 	private final InteligenceServiceImpl service;
+	
+	private final TopSecretDataMapper responseDataMapper;
+	
+	private final DistressMessageDataMapper requestDataMapper;
 
-	public RebelIntelligenceSplitServiceController(InteligenceServiceImpl service) {
+	public RebelIntelligenceSplitServiceController(
+			InteligenceServiceImpl service, 
+			TopSecretDataMapper responseDataMapper,
+			DistressMessageDataMapper requestDataMapper) {
 		this.service = service;
+		this.responseDataMapper = responseDataMapper;
+		this.requestDataMapper = requestDataMapper;
 		this.satellites = new LinkedList<>();
 	}
 
 	@Operation(summary = "Recibe información de la nave.")
 	@PostMapping("/{satelite-name}")
 	public void detect(@PathVariable("satelite-name") String sateliteName, @RequestBody SatelliteHttpRequest request) {
-		this.satellites.add(new SatelliteRequest(
-				request.getName(), 
-				request.getDistance(), 
-				request.getMessage()));
+		SatelliteRequest satelite = this.requestDataMapper.toRequest(request);
+		this.satellites.add(satelite);
 	}
 	
-	@Operation(summary = "Retorna la fuente y el mensaje auxilio descifrado de la nave.")
+	@Operation(summary = "Retorna la fuente y el mensaje descifrado proveniente de la nave.")
 	@GetMapping
 	public TopSecretHttpResponse detect() {
-		TopSecretHttpResponse response = this.service.decipher(new DistressMessageRequest(satellites));
-		this.satellites = new LinkedList<>();
-		return response;
+		DecryptedMessageResponse response = this.service.decipher(new DistressMessageRequest(satellites));
+		this.satellites.clear();
+		return this.responseDataMapper.toHttpResponse(response);
 	}
 
 }

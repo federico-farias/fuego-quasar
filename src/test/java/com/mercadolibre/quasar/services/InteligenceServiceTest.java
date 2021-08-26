@@ -7,11 +7,11 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.starwars.quasar.application.http.schema.PositionHttpResponse;
-import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.domain.model.DecryptedMessageResponse;
+import com.starwars.quasar.domain.model.PositionResponse;
 import com.starwars.quasar.domain.repository.SatelliteRepositoryImpl;
-import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.request.DistressMessageRequest;
+import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 import com.starwars.quasar.domain.services.impl.MessageDecryptorImpl;
 
@@ -28,8 +28,8 @@ public class InteligenceServiceTest {
 
 	@Test
 	public void itShouldGetTheLocationAndDecipherTheShipsDistressMessage() {
-		TopSecretHttpResponse expectedResponse = new TopSecretHttpResponse(
-				new PositionHttpResponse(-100.04391951008549, 75.45636245570131), 
+		DecryptedMessageResponse expectedResponse = new DecryptedMessageResponse(
+				new PositionResponse(-100.04391951008549, 75.45636245570131), 
 				"este es un mensaje secreto");
 		
 		DistressMessageRequest request = new DistressMessageRequest(
@@ -39,7 +39,7 @@ public class InteligenceServiceTest {
 						new SatelliteRequest("sato", 628.0, new String[] { "este", "", "un", "", "" })
 				));
 
-		TopSecretHttpResponse responseResult = this.service.decipher(request);
+		DecryptedMessageResponse responseResult = this.service.decipher(request);
 		assertEquals(responseResult, expectedResponse);
 	}
 

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SecretManifestoHttpRequest {
+public class DistressMessageHttpRequest {
 	
 	private List<SatelliteHttpRequest> satellites;
 
