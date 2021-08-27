@@ -1,5 +1,12 @@
 package com.starwars.quasar.domain.services;
 
+/**
+ * Contrato con la firma sugerida para implementar el descifrado del mensaje de
+ * la nave.
+ * 
+ * @author Federico Farias Sánchez
+ *
+ */
 public interface MessageDecryptor {
 
 	/**

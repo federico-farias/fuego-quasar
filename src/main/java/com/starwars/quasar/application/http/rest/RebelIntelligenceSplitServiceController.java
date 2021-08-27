@@ -14,10 +14,10 @@ import com.starwars.quasar.application.http.mapping.DistressMessageDataMapper;
 import com.starwars.quasar.application.http.mapping.TopSecretDataMapper;
 import com.starwars.quasar.application.http.schema.SatelliteHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.application.usecase.DistressMessageRequest;
+import com.starwars.quasar.application.usecase.GetDistressMessageUseCase;
+import com.starwars.quasar.application.usecase.SatelliteRequest;
 import com.starwars.quasar.domain.model.DecryptedMessageResponse;
-import com.starwars.quasar.domain.request.DistressMessageRequest;
-import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,14 +29,14 @@ public class RebelIntelligenceSplitServiceController {
 	
 	private final List<SatelliteRequest> satellites;
 
-	private final InteligenceServiceImpl service;
+	private final GetDistressMessageUseCase service;
 	
 	private final TopSecretDataMapper responseDataMapper;
 	
 	private final DistressMessageDataMapper requestDataMapper;
 
 	public RebelIntelligenceSplitServiceController(
-			InteligenceServiceImpl service, 
+			GetDistressMessageUseCase service, 
 			TopSecretDataMapper responseDataMapper,
 			DistressMessageDataMapper requestDataMapper) {
 		this.service = service;
@@ -55,7 +55,7 @@ public class RebelIntelligenceSplitServiceController {
 	@Operation(summary = "Retorna la fuente y el mensaje descifrado proveniente de la nave.")
 	@GetMapping
 	public TopSecretHttpResponse detect() {
-		DecryptedMessageResponse response = this.service.decipher(new DistressMessageRequest(satellites));
+		DecryptedMessageResponse response = this.service.execute(new DistressMessageRequest(satellites));
 		this.satellites.clear();
 		return this.responseDataMapper.toHttpResponse(response);
 	}

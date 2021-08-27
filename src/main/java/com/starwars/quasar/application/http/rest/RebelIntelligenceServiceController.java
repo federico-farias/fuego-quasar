@@ -11,10 +11,10 @@ import com.starwars.quasar.application.http.mapping.DistressMessageDataMapper;
 import com.starwars.quasar.application.http.mapping.TopSecretDataMapper;
 import com.starwars.quasar.application.http.schema.DistressMessageHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.application.usecase.DistressMessageRequest;
+import com.starwars.quasar.application.usecase.GetDistressMessageUseCase;
+import com.starwars.quasar.application.usecase.SatelliteRequest;
 import com.starwars.quasar.domain.model.DecryptedMessageResponse;
-import com.starwars.quasar.domain.request.DistressMessageRequest;
-import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.services.InteligenceService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,17 +24,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping("/topsecret")
 public class RebelIntelligenceServiceController {
 
-	private final InteligenceService service;
+	private final GetDistressMessageUseCase useCase;
 	
 	private final TopSecretDataMapper responseDataMapper;
 	
 	private final DistressMessageDataMapper requestDataMapper;
 
 	public RebelIntelligenceServiceController(
-			InteligenceService service, 
+			GetDistressMessageUseCase useCase, 
 			TopSecretDataMapper dataMapper,
 			DistressMessageDataMapper requestDataMapper) {
-		this.service = service;
+		this.useCase = useCase;
 		this.responseDataMapper = dataMapper;
 		this.requestDataMapper = requestDataMapper;
 	}
@@ -43,7 +43,7 @@ public class RebelIntelligenceServiceController {
 	@PostMapping
 	public TopSecretHttpResponse decipher(@RequestBody DistressMessageHttpRequest request) {
 		List<SatelliteRequest> satellites = this.requestDataMapper.toRequest(request);
-		DecryptedMessageResponse response = this.service.decipher(new DistressMessageRequest(satellites));
+		DecryptedMessageResponse response = this.useCase.execute(new DistressMessageRequest(satellites));
 		return this.responseDataMapper.toHttpResponse(response);
 	}
 

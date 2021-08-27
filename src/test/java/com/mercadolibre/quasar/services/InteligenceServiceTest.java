@@ -7,21 +7,21 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.starwars.quasar.application.usecase.DistressMessageRequest;
+import com.starwars.quasar.application.usecase.GetDistressMessageUseCase;
+import com.starwars.quasar.application.usecase.SatelliteRequest;
 import com.starwars.quasar.domain.model.DecryptedMessageResponse;
 import com.starwars.quasar.domain.model.PositionResponse;
-import com.starwars.quasar.domain.repository.SatelliteRepositoryImpl;
-import com.starwars.quasar.domain.request.DistressMessageRequest;
-import com.starwars.quasar.domain.request.SatelliteRequest;
-import com.starwars.quasar.domain.services.impl.InteligenceServiceImpl;
-import com.starwars.quasar.domain.services.impl.MessageDecryptorImpl;
+import com.starwars.quasar.infrastructure.MessageDecryptorImpl;
+import com.starwars.quasar.infrastructure.SatelliteRepositoryImpl;
 
 public class InteligenceServiceTest {
 
-	private InteligenceServiceImpl service;
+	private GetDistressMessageUseCase service;
 	
 	@BeforeEach
 	public void setUp() {
-		this.service = new InteligenceServiceImpl(
+		this.service = new GetDistressMessageUseCase(
 				new SatelliteRepositoryImpl(), 
 				new MessageDecryptorImpl());
 	}
@@ -39,7 +39,7 @@ public class InteligenceServiceTest {
 						new SatelliteRequest("sato", 628.0, new String[] { "este", "", "un", "", "" })
 				));
 
-		DecryptedMessageResponse responseResult = this.service.decipher(request);
+		DecryptedMessageResponse responseResult = this.service.execute(request);
 		assertEquals(responseResult, expectedResponse);
 	}
 
