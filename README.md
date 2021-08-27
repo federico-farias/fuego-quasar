@@ -11,7 +11,9 @@ Para ejecutar la aplicación siga los siguientes pasos:
 3. Dentro de la carpeta **target** ejecute el siguiente comando: `java -jar com.starwars.quasar-1.0.0-RELEASE.jar`
 
 Puede encontrar la demostración con Open API en el siguiente enlace: 
-[Operación Fuego de Quasar](http://ec2-18-116-50-39.us-east-2.compute.amazonaws.com:8080/swagger-ui.html)
+[Operación Fuego de Quasar](http://ec2-18-116-50-39.us-east-2.compute.amazonaws.com:8080/swagger-ui.html).
+
+Para realizar pruebas sobre el API REST expuesta, puede hacer uso del cliente que se muestra en la demo o bien utilizar otro cliente como postman.
 
 - Autor: Federico Farias Sánchez.
 - Correo electrónico: federico.farias@outlook.com
