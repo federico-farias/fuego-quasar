@@ -1,4 +1,4 @@
-package com.starwars.quasar.domain.request;
+package com.starwars.quasar.application.usecase;
 
 import lombok.ToString;
 

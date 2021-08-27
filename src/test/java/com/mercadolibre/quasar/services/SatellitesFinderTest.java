@@ -11,11 +11,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.starwars.quasar.application.usecase.SatelliteRequest;
 import com.starwars.quasar.domain.exceptions.BusinessException;
 import com.starwars.quasar.domain.model.Position;
 import com.starwars.quasar.domain.model.Satelite;
 import com.starwars.quasar.domain.repository.SatelliteRepository;
-import com.starwars.quasar.domain.request.SatelliteRequest;
 import com.starwars.quasar.domain.services.SatellitesFinder;
 
 public class SatellitesFinderTest {
