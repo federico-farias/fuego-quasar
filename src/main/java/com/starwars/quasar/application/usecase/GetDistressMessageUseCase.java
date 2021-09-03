@@ -55,7 +55,7 @@ public class GetDistressMessageUseCase {
 		
 		List<Satelite> satellites = this.satellitesFinder.findByName(satellitesRequest);
 		List<Position> satellitesPositions = this.positionsDataMapper.getPositions(satellites);
-		Locator locator = LocatorFactory.create(satellitesPositions);
+		Locator locator = LocatorFactory.getInstance(satellitesPositions);
 		
 		String[][] messages = this.messagesDataMapper.getMessages(satellitesRequest);
 		double[] distances = this.distancesDataMapper.getDistances(satellitesRequest);
