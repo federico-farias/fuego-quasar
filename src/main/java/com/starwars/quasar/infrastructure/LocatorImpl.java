@@ -54,7 +54,7 @@ public class LocatorImpl implements Locator {
 
 			return new Position(point[0], point[1]);	
 		} catch (IllegalArgumentException e) {
-			throw new LocationException("No hay suficiente información para calcular una posición.");
+			throw new LocationException("No hay suficiente información para calcular una posición.", e);
 		}
 	}
 

@@ -1,7 +1,7 @@
 package com.starwars.quasar.domain.services;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.starwars.quasar.application.usecase.SatelliteRequest;
 import com.starwars.quasar.domain.model.Satelite;
@@ -31,12 +31,10 @@ public class SatellitesFinder {
 	 * @return Lista de satelites encontrados.
 	 */
 	public List<Satelite> findByName(List<SatelliteRequest> satellitesRequest) {
-		List<Satelite> satellitesFound = new LinkedList<>();
-		for (SatelliteRequest sateliteRequest: satellitesRequest) {
-			Satelite satelite = this.finder.findByName(sateliteRequest.getName());
-			satellitesFound.add(satelite);
-		}
-		return satellitesFound;
+		return satellitesRequest
+				.stream()
+				.map(satelite -> this.finder.findByName(satelite.getName()))
+				.collect(Collectors.toList());
 	}
 
 }
