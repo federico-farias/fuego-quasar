@@ -14,6 +14,15 @@ import com.starwars.quasar.infrastructure.LocatorImpl;
  */
 public final class LocatorFactory {
 
+	/**
+	 * Singleton de locator.
+	 */
+	private static LocatorImpl locator;
+
+	/**
+	 * Constructor predeterminado privado para prevenir crear instancia de la
+	 * factoría.
+	 */
 	private LocatorFactory() {
 		super();
 	}
@@ -21,11 +30,15 @@ public final class LocatorFactory {
 	/**
 	 * Método de fábrica para crear una instancia de Locator.
 	 * 
-	 * @param satellitesPositions
+	 * @param positions
 	 * @return
 	 */
-	public static Locator create(List<Position> satellitesPositions) {
-		return new LocatorImpl(satellitesPositions);
+	public static Locator getInstance(List<Position> positions) {
+		if (locator == null) {
+			locator = new LocatorImpl();
+		}
+		locator.setPositions(positions);
+		return locator;
 	}
 
 }

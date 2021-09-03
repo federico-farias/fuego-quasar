@@ -32,13 +32,32 @@ public class LocatorImpl implements Locator {
 	public LocatorImpl(List<Position> positionsList) {
 		this.positionsList = positionsList;
 	}
+	
+	/**
+	 * Constructor predeterminado para poder setear las pociciones despues de crear una instancia.
+	 */
+	public LocatorImpl() {
+		super();
+	}
+	
+	/**
+	 * Método para recibir posiciones.
+	 * 
+	 * @param positions
+	 */
+	public void setPositions(List<Position> positions) {
+		if (positions == null) {
+			throw new LocationException("Las posiciones son requeridas.");
+		}
+		this.positionsList = positions;
+	}
 
 	/**
 	 * Método que implementa la firma sugerida para calcular la posición de la nave.
 	 */
 	@Override
 	public Position getLocation(double... distances) {
-		if (positionsList.size() != distances.length) {
+		if (positionsList == null || positionsList.size() != distances.length) {
 			throw new LocationException("No es posible obtener la posicion.");
 		}
 
@@ -54,7 +73,7 @@ public class LocatorImpl implements Locator {
 
 			return new Position(point[0], point[1]);	
 		} catch (IllegalArgumentException e) {
-			throw new LocationException("No hay suficiente información para calcular una posición.");
+			throw new LocationException("No hay suficiente información para calcular una posición.", e);
 		}
 	}
 
