@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.starwars.quasar.domain.model.Position;
 import com.starwars.quasar.domain.model.Satelite;
 
-public class PosotionsDataMapper {
+public class PositionsDataMapper {
 
 	/**
 	 * Método para las posiciones obtenidas de los satélites.
