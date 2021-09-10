@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.starwars.quasar.application.http.schema.PositionHttpResponse;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
-import com.starwars.quasar.domain.model.DecryptedMessageResponse;
+import com.starwars.quasar.application.usecase.DecryptedMessageResponse;
 
 /**
  * Clase que se encarga de mapear las entradas los puertos para transformarlos a las entradas de negocio.

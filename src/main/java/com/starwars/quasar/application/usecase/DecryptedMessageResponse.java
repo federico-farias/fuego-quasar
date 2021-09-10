@@ -1,4 +1,4 @@
-package com.starwars.quasar.domain.model;
+package com.starwars.quasar.application.usecase;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class PositionResponse {
+public class DecryptedMessageResponse {
 	
-	private double x;
+	private DecryptedPositionResponse position;
 
-	private double y;
+	private String message;
 
 }

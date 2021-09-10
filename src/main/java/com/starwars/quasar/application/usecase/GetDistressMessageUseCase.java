@@ -5,9 +5,7 @@ import java.util.List;
 import com.starwars.quasar.domain.mapper.DistancesDataMapper;
 import com.starwars.quasar.domain.mapper.MessagesDataMapper;
 import com.starwars.quasar.domain.mapper.PositionsDataMapper;
-import com.starwars.quasar.domain.model.DecryptedMessageResponse;
 import com.starwars.quasar.domain.model.Position;
-import com.starwars.quasar.domain.model.PositionResponse;
 import com.starwars.quasar.domain.model.Satelite;
 import com.starwars.quasar.domain.repository.SatelliteRepository;
 import com.starwars.quasar.domain.services.Locator;
@@ -63,7 +61,7 @@ public class GetDistressMessageUseCase {
 		Position position = locator.getLocation(distances);
 		String message = this.decryptor.getMessage(messages);
 
-		return new DecryptedMessageResponse(new PositionResponse(position.getX(), position.getY()), message);
+		return new DecryptedMessageResponse(new DecryptedPositionResponse(position.getX(), position.getY()), message);
 	}
 
 }
