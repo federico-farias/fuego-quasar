@@ -7,11 +7,11 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.starwars.quasar.application.usecase.DecryptedMessageResponse;
 import com.starwars.quasar.application.usecase.DistressMessageRequest;
 import com.starwars.quasar.application.usecase.GetDistressMessageUseCase;
+import com.starwars.quasar.application.usecase.DecryptedPositionResponse;
 import com.starwars.quasar.application.usecase.SatelliteRequest;
-import com.starwars.quasar.domain.model.DecryptedMessageResponse;
-import com.starwars.quasar.domain.model.PositionResponse;
 import com.starwars.quasar.infrastructure.MessageDecryptorImpl;
 import com.starwars.quasar.infrastructure.SatelliteRepositoryImpl;
 
@@ -29,7 +29,7 @@ public class InteligenceServiceTest {
 	@Test
 	public void itShouldGetTheLocationAndDecipherTheShipsDistressMessage() {
 		DecryptedMessageResponse expectedResponse = new DecryptedMessageResponse(
-				new PositionResponse(-100.04391951008549, 75.45636245570131), 
+				new DecryptedPositionResponse(-100.04391951008549, 75.45636245570131), 
 				"este es un mensaje secreto");
 		
 		DistressMessageRequest request = new DistressMessageRequest(
