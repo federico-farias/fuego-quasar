@@ -24,7 +24,7 @@ public class SatelliteRequest {
 			throw new BusinessException(String.format("El satelite [%s] no recibio la distancia de la nave.", name));
 		}
 		if (message == null) {
-			throw new BusinessException(String.format("El satelite [%s] no encontró recicio los mensajes.", name));
+			throw new BusinessException(String.format("El satelite [%s] no encontró los mensajes.", name));
 		}
 		this.name = name;
 		this.distance = distance;
