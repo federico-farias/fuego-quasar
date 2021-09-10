@@ -11,10 +11,10 @@ import com.starwars.quasar.application.http.mapping.DistressMessageDataMapper;
 import com.starwars.quasar.application.http.mapping.TopSecretDataMapper;
 import com.starwars.quasar.application.http.schema.DistressMessageHttpRequest;
 import com.starwars.quasar.application.http.schema.TopSecretHttpResponse;
+import com.starwars.quasar.application.usecase.DecryptedMessageResponse;
 import com.starwars.quasar.application.usecase.DistressMessageRequest;
 import com.starwars.quasar.application.usecase.GetDistressMessageUseCase;
 import com.starwars.quasar.application.usecase.SatelliteRequest;
-import com.starwars.quasar.domain.model.DecryptedMessageResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
