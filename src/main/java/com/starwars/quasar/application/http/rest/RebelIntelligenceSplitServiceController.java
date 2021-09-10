@@ -29,7 +29,7 @@ public class RebelIntelligenceSplitServiceController {
 	
 	private final List<SatelliteRequest> satellites;
 
-	private final GetDistressMessageUseCase service;
+	private final GetDistressMessageUseCase usecase;
 	
 	private final TopSecretDataMapper responseDataMapper;
 	
@@ -39,7 +39,7 @@ public class RebelIntelligenceSplitServiceController {
 			GetDistressMessageUseCase service, 
 			TopSecretDataMapper responseDataMapper,
 			DistressMessageDataMapper requestDataMapper) {
-		this.service = service;
+		this.usecase = service;
 		this.responseDataMapper = responseDataMapper;
 		this.requestDataMapper = requestDataMapper;
 		this.satellites = new LinkedList<>();
@@ -55,7 +55,7 @@ public class RebelIntelligenceSplitServiceController {
 	@Operation(summary = "Retorna la fuente y el mensaje descifrado proveniente de la nave.")
 	@GetMapping
 	public TopSecretHttpResponse detect() {
-		DecryptedMessageResponse response = this.service.execute(new DistressMessageRequest(satellites));
+		DecryptedMessageResponse response = this.usecase.execute(new DistressMessageRequest(satellites));
 		this.satellites.clear();
 		return this.responseDataMapper.toHttpResponse(response);
 	}
