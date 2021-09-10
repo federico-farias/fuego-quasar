@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.starwars.quasar.domain.mapper.DistancesDataMapper;
 import com.starwars.quasar.domain.mapper.MessagesDataMapper;
-import com.starwars.quasar.domain.mapper.PosotionsDataMapper;
+import com.starwars.quasar.domain.mapper.PositionsDataMapper;
 import com.starwars.quasar.domain.model.DecryptedMessageResponse;
 import com.starwars.quasar.domain.model.Position;
 import com.starwars.quasar.domain.model.PositionResponse;
@@ -30,7 +30,7 @@ public class GetDistressMessageUseCase {
 	
 	private final SatellitesFinder satellitesFinder;
 
-	private final PosotionsDataMapper positionsDataMapper;
+	private final PositionsDataMapper positionsDataMapper;
 
 	private final MessagesDataMapper messagesDataMapper;
 
@@ -39,7 +39,7 @@ public class GetDistressMessageUseCase {
 	public GetDistressMessageUseCase(SatelliteRepository setelliteRepository, MessageDecryptor decryptor) {
 		this.satellitesFinder = new SatellitesFinder(setelliteRepository);
 		this.decryptor = decryptor;
-		this.positionsDataMapper = new PosotionsDataMapper();
+		this.positionsDataMapper = new PositionsDataMapper();
 		this.messagesDataMapper = new MessagesDataMapper();
 		this.distancesDataMapper = new DistancesDataMapper();
 	}
